@@ -1,8 +1,8 @@
 var canvas = document.getElementById("canvas");
-canvas.width = $(document).width();
-canvas.height = $(document).height();
-var WIDTH = canvas.width;
-var HEIGHT = canvas.height;
+canvas.height = 1000;
+canvas.width = 1000;
+var WIDTH = 1000;
+var HEIGHT = 1000;
 var ctx = canvas.getContext("2d");
 var LEN = 10;
 var x = Math.floor(WIDTH / LEN);

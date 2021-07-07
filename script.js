@@ -1,4 +1,4 @@
-var canvas = document.getElementById("golCanvas");
+var canvas = document.getElementById("canvas");
 canvas.width = $(document).width();
 canvas.height = $(document).height();
 var WIDTH = canvas.width;
@@ -7,32 +7,32 @@ var ctx = canvas.getContext("2d");
 var LEN = 10;
 var x = Math.floor(WIDTH / LEN);
 var y = HEIGHT / LEN;
-var myGol;
-var golTmp;
+var cAutomata;
+var cAutomataTmp;
 
 function initTmp() {
-  for (var xVal = 0; xVal <= x + 2; xVal++) {
-    golTmp[xVal] = new Array();
-    for (var yVal = 0; yVal <= y + 2; yVal++) {
-      golTmp[xVal][yVal] = 0;
+  for (var r = 0; r <= x + 2; r++) {
+    cAutomataTmp[r] = new Array();
+    for (var c = 0; c <= y + 2; c++) {
+      cAutomataTmp[r][c] = 0;
     }
   }
 }
 
 function initMatrix() {
   // reset matrix
-  myGol = new Array();
-  golTmp = new Array();
+  cAutomata = new Array();
+  cAutomataTmp = new Array();
 
-  for (var xVal = 0; xVal <= x + 2; xVal++) {
-    myGol[xVal] = new Array();
-    golTmp[xVal] = new Array();
-    for (var yVal = 0; yVal <= y + 2; yVal++) {
-      golTmp[xVal][yVal] = 0;
+  for (var r = 0; r <= x + 2; r++) {
+    cAutomata[r] = new Array();
+    cAutomataTmp[r] = new Array();
+    for (var c = 0; c <= y + 2; c++) {
+      cAutomataTmp[r][c] = 0;
       var randVal = Math.floor(Math.random() * 2);
-      myGol[xVal][yVal] = randVal;
+      cAutomata[r][c] = randVal;
       if (randVal == 1) {
-        draw(xVal + 1, yVal + 1);
+        draw(r + 1, c + 1);
       }
     }
   }
@@ -49,34 +49,34 @@ function nextStep() {
   ctx.fillStyle = "rgb(0,0,0)";
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-  for (var xVal = 1; xVal <= x + 1; xVal++) {
-    for (var yVal = 1; yVal <= y + 1; yVal++) {
+  for (var r = 1; r <= x + 1; r++) {
+    for (var c = 1; c <= y + 1; c++) {
       var neighbourSum =
-        myGol[xVal - 1][yVal] +
-        myGol[xVal - 1][yVal - 1] +
-        myGol[xVal - 1][yVal + 1] +
-        myGol[xVal][yVal - 1] +
-        myGol[xVal][yVal + 1] +
-        myGol[xVal + 1][yVal] +
-        myGol[xVal + 1][yVal + 1] +
-        myGol[xVal + 1][yVal - 1];
-      if (myGol[xVal][yVal] == 1) {
+        cAutomata[r - 1][c] +
+        cAutomata[r - 1][c - 1] +
+        cAutomata[r - 1][c + 1] +
+        cAutomata[r][c - 1] +
+        cAutomata[r][c + 1] +
+        cAutomata[r + 1][c] +
+        cAutomata[r + 1][c + 1] +
+        cAutomata[r + 1][c - 1];
+      if (cAutomata[r][c] == 1) {
         if (neighbourSum == 2 || neighbourSum == 3) {
-          golTmp[xVal][yVal] = 1;
+          cAutomataTmp[r][c] = 1;
           ctx.fillStyle = "rgb(100,100,100)";
-          draw(xVal, yVal);
+          draw(r, c);
         }
       } else {
         if (neighbourSum == 3) {
-          golTmp[xVal][yVal] = 1;
+          cAutomataTmp[r][c] = 1;
           ctx.fillStyle = "rgb(255,255,255)";
-          draw(xVal, yVal);
+          draw(r, c);
         }
       }
     }
   }
 
-  myGol = golTmp.slice();
+  cAutomata = cAutomataTmp.slice();
 }
 
 initMatrix();

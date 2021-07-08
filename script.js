@@ -1,19 +1,21 @@
-var canvas = document.getElementById("canvas");
-canvas.height = 1000;
-canvas.width = 1000;
-var WIDTH = 1000;
-var HEIGHT = 1000;
-var ctx = canvas.getContext("2d");
-var LEN = 10;
-var x = Math.floor(WIDTH / LEN);
-var y = HEIGHT / LEN;
-var cAutomata;
-var cAutomataTmp;
+// instantiating values
+const canvas = document.getElementById("canvas");
+canvas.height = document.body.clientHeight;
+canvas.width = document.body.clientWidth;
+const WIDTH = canvas.width;
+const HEIGHT = canvas.height;
+const ctx = canvas.getContext("2d");
+const SCALE = 10;
+const COLS = Math.floor(WIDTH / SCALE);
+const ROWS = Math.floor(HEIGHT / SCALE);
+var cAutomata = [];
+var cAutomataTmp = [];
 
-function initTmp() {
-  for (var r = 0; r <= x + 2; r++) {
+//
+function initSterile() {
+  for (var r = 0; r <= ROWS + 2; r++) {
     cAutomataTmp[r] = new Array();
-    for (var c = 0; c <= y + 2; c++) {
+    for (var c = 0; c <= COLS + 2; c++) {
       cAutomataTmp[r][c] = 0;
     }
   }
@@ -23,11 +25,11 @@ function initMatrix() {
   // reset matrix
   cAutomata = new Array();
   cAutomataTmp = new Array();
-
-  for (var r = 0; r <= x + 2; r++) {
+  // create empty temp 2d array and an automata 2d array with randomly places cells
+  for (var r = 0; r <= ROWS + 2; r++) {
     cAutomata[r] = new Array();
     cAutomataTmp[r] = new Array();
-    for (var c = 0; c <= y + 2; c++) {
+    for (var c = 0; c <= COLS + 2; c++) {
       cAutomataTmp[r][c] = 0;
       var randVal = Math.floor(Math.random() * 2);
       cAutomata[r][c] = randVal;
@@ -39,38 +41,50 @@ function initMatrix() {
 }
 
 function draw(x, y) {
-  ctx.fillRect(LEN * (x - 1), LEN * (y - 1), LEN, LEN);
+  // x is horizontal axis
+  // y is vertical axis
+  // fill at (x, y) for (w, h)
+  ctx.fillRect(SCALE * (x - 1), SCALE * (y - 1), SCALE, SCALE);
+}
+
+function neighbourSum(r, c) {
+  return (
+    cAutomata[r - 1][c] +
+    cAutomata[r - 1][c - 1] +
+    cAutomata[r - 1][c + 1] +
+    cAutomata[r][c - 1] +
+    cAutomata[r][c + 1] +
+    cAutomata[r + 1][c] +
+    cAutomata[r + 1][c + 1] +
+    cAutomata[r + 1][c - 1]
+  );
 }
 
 function nextStep() {
   // reset tempArray
-  initTmp();
+  initSterile();
   // reset canvas
   ctx.fillStyle = "rgb(0,0,0)";
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-  for (var r = 1; r <= x + 1; r++) {
-    for (var c = 1; c <= y + 1; c++) {
-      var neighbourSum =
-        cAutomata[r - 1][c] +
-        cAutomata[r - 1][c - 1] +
-        cAutomata[r - 1][c + 1] +
-        cAutomata[r][c - 1] +
-        cAutomata[r][c + 1] +
-        cAutomata[r + 1][c] +
-        cAutomata[r + 1][c + 1] +
-        cAutomata[r + 1][c - 1];
+  for (var r = 1; r <= ROWS + 1; r++) {
+    for (var c = 1; c <= COLS + 1; c++) {
+      var sumOfNeighbors = neighbourSum(r, c);
+
       if (cAutomata[r][c] == 1) {
-        if (neighbourSum == 2 || neighbourSum == 3) {
+        if (sumOfNeighbors == 2 || sumOfNeighbors == 3) {
           cAutomataTmp[r][c] = 1;
+          // cell continues to live
           ctx.fillStyle = "rgb(100,100,100)";
-          draw(r, c);
+          // draw accepts (x, y)
+          draw(c, r);
         }
       } else {
-        if (neighbourSum == 3) {
+        if (sumOfNeighbors == 3) {
           cAutomataTmp[r][c] = 1;
+          // new cell born
           ctx.fillStyle = "rgb(255,255,255)";
-          draw(r, c);
+          draw(c, r);
         }
       }
     }

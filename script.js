@@ -6,16 +6,15 @@ const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
 const ctx = canvas.getContext("2d");
 const SCALE = 10;
-const COLS = Math.floor(WIDTH / SCALE);
-const ROWS = Math.floor(HEIGHT / SCALE);
+const COLS = Math.floor(WIDTH / SCALE) + 2;
+const ROWS = Math.floor(HEIGHT / SCALE) + 2;
 var cAutomata = [];
 var cAutomataTmp = [];
 
-//
 function initSterile() {
-  for (var r = 0; r <= ROWS + 2; r++) {
+  for (var r = 0; r <= ROWS; r++) {
     cAutomataTmp[r] = new Array();
-    for (var c = 0; c <= COLS + 2; c++) {
+    for (var c = 0; c <= COLS; c++) {
       cAutomataTmp[r][c] = 0;
     }
   }
@@ -26,10 +25,10 @@ function initMatrix() {
   cAutomata = new Array();
   cAutomataTmp = new Array();
   // create empty temp 2d array and an automata 2d array with randomly places cells
-  for (var r = 0; r <= ROWS + 2; r++) {
+  for (var r = 0; r <= ROWS; r++) {
     cAutomata[r] = new Array();
     cAutomataTmp[r] = new Array();
-    for (var c = 0; c <= COLS + 2; c++) {
+    for (var c = 0; c <= COLS; c++) {
       cAutomataTmp[r][c] = 0;
       var randVal = Math.floor(Math.random() * 2);
       cAutomata[r][c] = randVal;
@@ -67,8 +66,8 @@ function nextStep() {
   ctx.fillStyle = "rgb(0,0,0)";
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-  for (var r = 1; r <= ROWS + 1; r++) {
-    for (var c = 1; c <= COLS + 1; c++) {
+  for (var r = 1; r <= ROWS - 1; r++) {
+    for (var c = 1; c <= COLS - 1; c++) {
       var sumOfNeighbors = neighbourSum(r, c);
 
       if (cAutomata[r][c] == 1) {

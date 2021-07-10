@@ -1,0 +1,59 @@
+* {
+  font-size: 16px;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+    color: white;
+  }
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: white;
+    color: black;
+  }
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  padding: 2rem;
+}
+
+nav {
+  display: flexbox;
+  flex-grow: 2;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-flex;
+  justify-content: center;
+}
+
+nav li a {
+  font-size: 2rem;
+  font-weight: 200;
+  color: white;
+  text-decoration: none;
+}
+
+.brief {
+  display: grid;
+  padding: 5rem 5rem;
+  grid-gap: 1rem 1rem;
+  grid-template-columns: minmax(200px, 800px);
+}
+
+.brief h1 {
+  font-size: 4rem;
+}

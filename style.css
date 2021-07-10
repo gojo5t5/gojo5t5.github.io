@@ -1,9 +1,20 @@
-* {
-  margin: 0;
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: white;
+    color: black;
+  }
 }
-html,
-body {
-  background: black;
-  height: 150%;
-  width: 125%;
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+    color: white;
+  }
+}
+
+ul {
+  list-style: none;
+  text-decoration: none;
 }

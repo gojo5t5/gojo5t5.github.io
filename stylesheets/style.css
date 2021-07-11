@@ -4,10 +4,19 @@
   font-weight: 400;
 }
 
+html,
+body {
+  width: 100%;
+  padding: 2rem;
+}
+
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: black;
+    color: white;
+  }
+  nav li a {
     color: white;
   }
 }
@@ -22,38 +31,101 @@
 
 header {
   position: fixed;
-  width: 100%;
   z-index: 1;
-  padding: 2rem;
+  width: 100%;
+  align-content: center;
 }
 
-nav {
-  display: flexbox;
-  flex-grow: 2;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
+ul {
+  list-style: none;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+ul:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
 }
 
 nav li {
-  display: inline-flex;
-  justify-content: center;
+  display: inline-block;
 }
 
 nav li a {
   font-size: 2rem;
+  color: black;
   font-weight: 200;
-  color: white;
   text-decoration: none;
 }
 
-.brief {
+/* .grid {
   display: grid;
-  padding: 5rem 5rem;
   grid-gap: 1rem 1rem;
   grid-template-columns: minmax(200px, 800px);
+  grid-template: repeat(4, 20px) 1fr repeat(4, 20px) / repeat(2, 1fr);
 }
 
-.brief h1 {
+.intro {
+  grid-area: 5/ 1 / 6 / 2;
+} */
+
+.intro h1 {
   font-size: 4rem;
+  text-align: left;
+}
+
+.fly-text1 {
+  font-size: 2rem;
+  animation: flowing 18s linear infinite;
+  transform: translateX(120%);
+}
+.fly-text2 {
+  font-size: 2rem;
+  animation: flowing 10s linear infinite;
+  transform: translateX(120%);
+}
+.fly-text3 {
+  font-size: 2rem;
+  animation: flowing 16s linear infinite;
+  transform: translateX(120%);
+}
+.fly-text4 {
+  font-size: 2rem;
+  animation: flowing 9s linear infinite;
+  transform: translateX(120%);
+}
+.fly-text5 {
+  font-size: 2rem;
+  animation: flowing 13s linear infinite;
+  transform: translateX(120%);
+}
+.fly-text6 {
+  font-size: 2rem;
+  animation: flowing 10s linear infinite;
+  transform: translateX(120%);
+}
+.fly-text7 {
+  font-size: 2rem;
+  animation: flowing 12s linear infinite;
+  transform: translateX(120%);
+}
+
+@keyframes flowing {
+  100% {
+    transform: translateX(-100%);
+  }
+  0%,
+  20.00% {
+    opacity: 0.5;
+  }
+  20.00%,
+  50.35% {
+    opacity: 1;
+  }
+  50.35%,
+  100% {
+    opacity: 0.5;
+  }
 }

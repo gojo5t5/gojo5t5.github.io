@@ -68,39 +68,8 @@ nav li a {
   text-align: left;
 }
 
-.fly-text1 {
+.fly-text {
   font-size: 2rem;
-  animation: flowing 16s linear infinite;
-  transform: translateX(120%);
-}
-.fly-text2 {
-  font-size: 2rem;
-  animation: flowing 8s linear infinite;
-  transform: translateX(120%);
-}
-.fly-text3 {
-  font-size: 2rem;
-  animation: flowing 14s linear infinite;
-  transform: translateX(120%);
-}
-.fly-text4 {
-  font-size: 2rem;
-  animation: flowing 7s linear infinite;
-  transform: translateX(120%);
-}
-.fly-text5 {
-  font-size: 2rem;
-  animation: flowing 11s linear infinite;
-  transform: translateX(120%);
-}
-.fly-text6 {
-  font-size: 2rem;
-  animation: flowing 6s linear infinite;
-  transform: translateX(120%);
-}
-.fly-text7 {
-  font-size: 2rem;
-  animation: flowing 12s linear infinite;
   transform: translateX(120%);
 }
 

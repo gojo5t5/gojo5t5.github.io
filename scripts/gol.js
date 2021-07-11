@@ -22,6 +22,7 @@ const STYLES = {
     spawn: "rgb(0, 0, 0)",
   },
 };
+
 // instantiating values
 // set canvas to fill the cell it is in
 const canvas = document.getElementById("gol");
@@ -38,6 +39,7 @@ const ROWS = Math.floor(HEIGHT / SCALE) + 2;
 var cAutomata = [];
 var cAutomataTmp = [];
 
+// initialise a sterile template
 function initSterile() {
   for (var r = 0; r <= ROWS; r++) {
     cAutomataTmp[r] = new Array();
@@ -47,6 +49,7 @@ function initSterile() {
   }
 }
 
+// initialise matrix that runs the simulation
 function initMatrix() {
   // reset matrix
   cAutomata = new Array();
@@ -66,6 +69,7 @@ function initMatrix() {
   }
 }
 
+// helper funtion that drawsthe cells
 function draw(x, y) {
   // x is horizontal axis
   // y is vertical axis
@@ -73,6 +77,7 @@ function draw(x, y) {
   ctx.fillRect(SCALE * (x - 1), SCALE * (y - 1), SCALE, SCALE);
 }
 
+// helper function that finds the neighbor sum
 function neighbourSum(r, c) {
   return (
     cAutomata[r - 1][c] +
@@ -86,6 +91,7 @@ function neighbourSum(r, c) {
   );
 }
 
+// finds next step of the board
 function nextStep() {
   // reset tempArray
   initSterile();
@@ -121,3 +127,8 @@ function nextStep() {
 
 initMatrix();
 setInterval(nextStep, 50);
+
+// listen for button event
+document.getElementById("gol-restart").addEventListener("click", function () {
+  initMatrix();
+});

@@ -72,6 +72,9 @@ nav li a {
   transform: translateX(120%);
   white-space: nowrap;
 }
+.fly-text:hover {
+  transform: translateY(-10px);
+}
 
 .buffer {
   display: block;
@@ -100,5 +103,18 @@ nav li a {
 }
 
 .cell strong {
+  font-size: 1.4rem;
+}
+
+.restart {
+  font-size: 1.4rem;
+  will-change: transform;
+  transition: transform 450ms;
+}
+.restart:hover {
+  transition: transform 125ms;
+  transform: translateY(-5px);
+}
+.info {
   font-size: 1.4rem;
 }

@@ -16,4 +16,7 @@ function letTextFly(text) {
     iterations: Infinity,
   };
   text.animate(text.keyframes, text.animProps);
+  text.addEventListener("mouseover", function (e) {
+    e.target.animProps.duration += 4000;
+  });
 }

@@ -11,6 +11,27 @@ body {
   color: black;
 }
 
+/* mobile */
+@media only screen and (max-width: 600px) {
+  main .intro h1 {
+    font-size: 2.5rem;
+  }
+  main .projects {
+    height: 1000px;
+    grid-template-columns: auto;
+  }
+  #contacts h2 {
+    margin: auto;
+    font-size: 1.5rem;
+    font-weight: 500;
+    display: block;
+  }
+  #contacts p {
+    line-height: normal;
+    width: auto;
+  }
+}
+
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   html,
@@ -27,6 +48,9 @@ body {
   .projects .cell {
     background-color: black;
   }
+  .contacts a {
+    color: white;
+  }
 }
 
 /* navigation bar */
@@ -39,7 +63,6 @@ header {
 }
 
 nav ul {
-  display: flex;
   list-style: none;
   display: block;
   text-align: center;
@@ -70,11 +93,8 @@ nav li a {
 
 .fly-text {
   font-size: 2rem;
-  transform: translateX(120%);
+  transform: translateX(130%);
   white-space: nowrap;
-}
-.fly-text:hover {
-  transform: translateY(-10px);
 }
 
 .buffer {
@@ -111,9 +131,6 @@ nav li a {
   transition: transform 125ms;
   transform: translateY(-5px);
 }
-.info {
-  font-size: 1.4rem;
-}
 .contacts {
   line-height: 3rem;
   display: grid;
@@ -125,4 +142,5 @@ nav li a {
 }
 .contacts h2 {
   font-size: 2.5rem;
+  grid-column: 1/ 3;
 }

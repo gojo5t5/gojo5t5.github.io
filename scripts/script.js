@@ -9,7 +9,7 @@ function letTextFly(text) {
     { opacity: 0.5 },
     { opacity: 1 },
     { opacity: 0.75 },
-    { transform: "translateX(-100%)" },
+    { transform: "translateX(-120%)" },
   ];
   text.animProps = {
     duration: 5000 + Math.random() * 10000,

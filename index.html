@@ -42,12 +42,10 @@
     <main>
       <section class="intro">
         <p class="fly-text">an aspiring AI/ML researcher</p>
-        <p class="fly-text">
-          an NTU Data Science and Artificial Intelligence student
-        </p>
+        <p class="fly-text">an NTU DSAI student</p>
         <p class="fly-text">an avid learner</p>
         <p class="fly-text">a Creative Coder</p>
-        <h1>this.name = "Matteo He"</h1>
+        <h1>this.name = "matteo he"</h1>
         <p class="fly-text">a beginner Competitive Programmer</p>
         <p class="fly-text">a citizen of the world</p>
         <p class="fly-text">a pianist</p>
@@ -63,10 +61,14 @@
       </section>
 
       <section class="buffer"></section>
-      <section id="projects" style="height: 9rem"></section>
+      <section class="start-of-section" id="projects">
+        <h2>this.projects =‎‎ ‎</h2>
+        <strong> {</strong>
+      </section>
+
       <section class="projects">
         <!-- Project 1 Game of life  -->
-        <div class="cell">
+        <div class="cell" style="grid-area: p1">
           <a href="https://gojo5t5.github.io/gol-web/">
             <canvas id="gol">
               Your browser doesn't support this website. Please try using google
@@ -75,7 +77,7 @@
           </a>
         </div>
         <!-- Description 1 Game of life -->
-        <div class="cell">
+        <div class="cell" style="grid-area: d1">
           <button class="restart" id="gol-restart">Restart</button>
           <br />
           <br />
@@ -91,12 +93,22 @@
         <!-- Descriptino 2 -->
         <div class="cell">content</div>
       </section>
+      <section class="end-of-section">
+        <strong>}</strong>
+      </section>
+
       <section class="buffer"></section>
-      <section class="contacts" id="contacts">
-        <h2>Let's get in touch!</h2>
+      <section class="start-of-section" id="contacts">
+        <h2>this.contacts =‎‎ ‎</h2>
+        <strong> {</strong>
+      </section>
+      <section class="contacts">
         <p>
           Leave me a message: <a href="mailto:hematteo@outlook.com">email</a>
         </p>
+      </section>
+      <section class="end-of-section">
+        <strong>}</strong>
       </section>
       <!-- scripts of projects -->
       <script src="./scripts/gol.js"></script>

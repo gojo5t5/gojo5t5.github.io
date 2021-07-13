@@ -144,6 +144,7 @@ nav li a {
   font-size: 2rem;
   transform: translateX(110%);
   white-space: nowrap;
+  color: #333;
 }
 .buffer {
   display: block;
@@ -193,7 +194,7 @@ nav li a {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-a {
+.cell a {
   display: inline-block;
   position: relative;
   background: none;
@@ -201,11 +202,11 @@ a {
   color: #000;
   cursor: pointer;
 }
-span {
+.cell span {
   display: block;
 }
-a::before,
-a::after {
+.cell a::before,
+.cell a::after {
   content: "";
   width: 0;
   height: 0.2rem;
@@ -213,8 +214,8 @@ a::after {
   transition: all 0.2s linear;
   background: #000;
 }
-span::before,
-span::after {
+.cell span::before,
+.cell span::after {
   content: "";
   width: 0.2rem;
   height: 0;
@@ -222,12 +223,12 @@ span::after {
   transition: all 0.2s linear;
   background: #000;
 }
-a:hover::before,
-a:hover::after {
+.cell a:hover::before,
+.cell a:hover::after {
   width: 100%;
 }
-a:hover span::before,
-a:hover span::after {
+.cell a:hover span::before,
+.cell a:hover span::after {
   height: 100%;
 }
 .btn-2::before,

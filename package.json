@@ -1,0 +1,23 @@
+{
+  "name": "gojo5t5.github.io",
+  "version": "1.0.0",
+  "description": "my personal website",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --watch scss -o css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gojo5t5/gojo5t5.github.io.git"
+  },
+  "author": "Matteo He",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gojo5t5/gojo5t5.github.io/issues"
+  },
+  "homepage": "https://github.com/gojo5t5/gojo5t5.github.io#readme",
+  "dependencies": {
+    "node-sass": "^6.0.1"
+  }
+}

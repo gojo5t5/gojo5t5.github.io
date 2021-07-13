@@ -3,19 +3,48 @@ body {
   font-size: 16px;
   font-family: "Roboto Mono", monospace;
   font-weight: 400;
-  padding: 1rem;
+  padding: 2rem;
   overflow-x: hidden;
   background-color: white;
   color: black;
 }
-
+.start-of-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+}
+.end-of-section {
+  text-align: center;
+}
+h2 {
+  text-align: center;
+  font-size: 3rem;
+}
+strong {
+  font-size: 5rem;
+  text-align: center;
+}
+/* ipad */
+@media only screen and (max-width: 1366px) {
+  main .intro h1 {
+    font-size: 4rem;
+  }
+  .intro .fly-text {
+    font-size: 3rem;
+    width: 200%;
+    transform: translateX(70%);
+  }
+  main .projects {
+    grid-template-rows: repeat(1, 400px 300px);
+  }
+}
 /* mobile */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 736px) {
   html,
   body {
     padding: 1rem;
   }
-
   main .intro h1 {
     font-size: 3rem;
   }
@@ -77,20 +106,6 @@ body {
     color: white;
   }
 }
-.start-of-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10rem;
-}
-h2 {
-  text-align: center;
-  font-size: 3rem;
-}
-strong {
-  font-size: 5rem;
-  text-align: center;
-}
 
 /* navigation bar */
 header {
@@ -136,7 +151,6 @@ nav li a {
 }
 
 /* projects section */
-
 .projects {
   display: grid;
   width: 100%;
@@ -156,6 +170,7 @@ nav li a {
   font-size: 1.4rem;
 }
 .restart {
+  height: 3rem;
   font-size: 1.4rem;
   will-change: transform;
   transition: transform 450ms;
@@ -168,4 +183,82 @@ nav li a {
 .contacts {
   height: 10rem;
   text-align: center;
+}
+
+@import url(https://fonts.googleapis.com/css?family=PT+Sans);
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+a {
+  display: inline-block;
+  position: relative;
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+}
+span {
+  display: block;
+}
+a::before,
+a::after {
+  content: "";
+  width: 0;
+  height: 0.2rem;
+  position: absolute;
+  transition: all 0.2s linear;
+  background: #000;
+}
+span::before,
+span::after {
+  content: "";
+  width: 0.2rem;
+  height: 0;
+  position: absolute;
+  transition: all 0.2s linear;
+  background: #000;
+}
+a:hover::before,
+a:hover::after {
+  width: 100%;
+}
+a:hover span::before,
+a:hover span::after {
+  height: 100%;
+}
+.btn-2::before,
+.btn-2::after {
+  transition-delay: 0s;
+}
+.btn-2 span::before,
+.btn-2 span::after {
+  transition-delay: 0.2s;
+}
+.btn-2::before {
+  right: 0;
+  top: 0;
+}
+.btn-2::after {
+  left: 0;
+  bottom: 0;
+}
+.btn-2 span::before {
+  left: 0;
+  top: 0;
+}
+.btn-2 span::after {
+  right: 0;
+  bottom: 0;
+}
+.btn-2:hover::before,
+.btn-2:hover::after {
+  transition-delay: 0.2s;
+}
+.btn-2:hover span::before,
+.btn-2:hover span::after {
+  transition-delay: 0s;
 }

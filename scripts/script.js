@@ -19,7 +19,7 @@ function letTextFly(text) {
     { transform: "translateX(-100%)" },
   ];
   text.animProps = {
-    duration: 5000 + Math.random() * 10000,
+    duration: 8000 + Math.random() * 10000,
     iterations: Infinity,
   };
   text.animate(text.keyframes, text.animProps);

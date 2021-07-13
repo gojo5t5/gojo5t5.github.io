@@ -167,6 +167,5 @@ nav li a {
 }
 .contacts {
   height: 10rem;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }

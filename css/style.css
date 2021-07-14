@@ -105,6 +105,9 @@ strong {
     border: 1px white solid;
     color: white;
   }
+  .fly-text {
+    color: #fff !important;
+  }
 }
 
 /* navigation bar */

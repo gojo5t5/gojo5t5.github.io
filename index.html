@@ -41,7 +41,7 @@
     <main>
       <section class="intro">
         <p class="fly-text">an aspiring AI/ML researcher</p>
-        <p class="fly-text">an NTU DSAI student</p>
+        <p class="fly-text">studying compsci and math @ st andrews</p>
         <p class="fly-text">an avid learner</p>
         <p class="fly-text">a creative coder</p>
         <h1>this.name = "matteo he"</h1>
@@ -57,7 +57,6 @@
         <p class="fly-text">a full stack developer</p>
         <p class="fly-text">a techie</p>
         <p class="fly-text">fluent in python</p>
-        <p class="fly-text">a weight-lifter</p>
         <p class="fly-text">a foodie</p>
         <script src="./scripts/script.js"></script>
       </section>
@@ -92,9 +91,28 @@
           initial conditions, the board is able to generate mesmerizing patterns
           throughout the course of its life.
         </div>
-        <!-- Project 2 -->
+
+        <!-- Project 2 Lorenz Attractor -->
+        <div class="cell" style="grid-area: p2">
+          <a class="btn-2">
+            <span id='lorenz'>
+              <!-- <canvas id="lorenz">
+                Your browser doesn't support this website. Please try using
+                google chrome or safari.
+              </canvas> -->
+            </span>
+          </a>
+        </div>
+        <!-- Description 2 -->
+        <div class="cell" style="grid-area: d2">
+          <button class="restart" id="lorenz-restart">Restart</button>
+          <br />
+          <br />
+          <strong>Lorenz Attractor</strong> <br />
+          The lorenz model consists of three ordinary differential equations also known as the Lorenz equations. These differential equations were intended to represent a simplified mathematical description for atmospheric convection.
+        </div>
+
         <div class="cell">!incoming project!</div>
-        <!-- Descriptino 2 -->
         <div class="cell">!incoming content!</div>
       </section>
       <section class="end-of-section">
@@ -129,8 +147,15 @@
       <section class="end-of-section">
         <strong>}</strong>
       </section>
+
       <!-- scripts of projects -->
       <script src="./scripts/gol.js"></script>
+      <!-- <script src="./scripts/lorenz.js"></script> -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+      <script src="./scripts/lorenz2.js"></script>
+
     </main>
   </body>
 </html>

@@ -63,14 +63,14 @@ function initMatrix() {
       var randVal = Math.floor(Math.random() * 2);
       cAutomata[r][c] = randVal;
       if (randVal == 1) {
-        draw(r + 1, c + 1);
+        drawgol(r + 1, c + 1);
       }
     }
   }
 }
 
-// helper funtion that drawsthe cells
-function draw(x, y) {
+// helper funtion that drawgolsthe cells
+function drawgol(x, y) {
   // x is horizontal axis
   // y is vertical axis
   // fill at (x, y) for (w, h)
@@ -108,15 +108,15 @@ function nextStep() {
           cAutomataTmp[r][c] = 1;
           // cell continues to live
           ctx.fillStyle = STYLES[theme]["survive"];
-          // draw accepts (x, y)
-          draw(c, r);
+          // drawgol accepts (x, y)
+          drawgol(c, r);
         }
       } else {
         if (sumOfNeighbors == 3) {
           cAutomataTmp[r][c] = 1;
           // new cell born
           ctx.fillStyle = STYLES[theme]["spawn"];
-          draw(c, r);
+          drawgol(c, r);
         }
       }
     }

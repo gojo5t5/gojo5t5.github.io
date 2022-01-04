@@ -49,7 +49,7 @@ strong {
     font-size: 3rem;
   }
   main .projects {
-    height: 1000px;
+    height: 1500px;
     grid-template-columns: auto;
     grid-template-rows: repeat(4, 2fr 1fr);
     grid-template-areas:
@@ -72,6 +72,7 @@ strong {
     font-size: 4rem;
   }
   .end-of-section {
+    display: flex;
     justify-content: left;
   }
   .intro .fly-text {

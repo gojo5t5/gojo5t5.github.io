@@ -51,12 +51,16 @@ strong {
   main .projects {
     height: 1000px;
     grid-template-columns: auto;
-    grid-template-rows: repeat(2, 2fr 1fr);
+    grid-template-rows: repeat(4, 2fr 1fr);
     grid-template-areas:
       "p1"
       "d1"
       "p2"
-      "d2";
+      "d2"
+      "p3"
+      "d3"
+      "p4"
+      "d4";
   }
   main .start-of-section {
     padding-top: 3rem;

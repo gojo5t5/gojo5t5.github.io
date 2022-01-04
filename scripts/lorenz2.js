@@ -1,11 +1,9 @@
 const canvaslorenz = document.getElementById("lorenz-canvas");
 const ctxl = canvaslorenz.getContext("2d");
-canvaslorenz.height = cell[0].clientHeight;
-canvaslorenz.width = cell[0].clientWidth;
-let width = canvaslorenz.width;
-let height = canvaslorenz.height;
+canvaslorenz.height = HEIGHT;
+canvaslorenz.width = WIDTH;
 ctxl.fillStyle = "rgb(0, 0, 0)";
-ctxl.fillRect(0, 0, width, height);
+ctxl.fillRect(0, 0, WIDTH, HEIGHT);
 
 var d = 28,
   h = 0.001,
@@ -16,15 +14,16 @@ var d = 28,
   x1,
   y1,
   z1,
-  cx = width/2,
-  cy = height/2,
-  scale = 5,
-  n = 10000,
+  cx = WIDTH/2,
+  cy = HEIGHT/2,
+  scale = 1,
+  n = 100000,
   i = 0;
 
 var interval = setInterval(function () {
   if (i < n) {
     for (var k = 0; k < 20; k += 1) {
+      console.log(k);
       x1 = x0 + h * t * (x0 - y0);
       y1 = y0 + h * (-x0 * z0 + d * x0 - y0);
       z1 = z0 + h * (x0 * y0 - z0);
@@ -52,4 +51,4 @@ var interval = setInterval(function () {
   } else {
     clearInterval(interval);
   }
-}, 5);
+}, 1);

@@ -1,63 +1,83 @@
-const canvaslorenz = document.getElementById("lorenz");
-const ctxl = canvaslorenz.getContext("2d");
-canvaslorenz.height = cell[0].clientHeight;
-canvaslorenz.width = cell[0].clientWidth;
-let width = canvaslorenz.width;
-let height = canvaslorenz.height;
-let points1 = new Array();
-ctxl.fillStyle = "rgb(0, 0, 0)";
-ctxl.fillRect(0, 0, width, height);
+let x = 0.01;
+let y = 0;
+let z = 0;
+let a = 10;
+let b = 28;
+let c = 8.0 / 3.0;
+let points = new Array();
 
-var d = 28,
-  h = 0.001,
-  t = -6,
-  x0 = 0,
-  y0 = 1,
-  z0 = 10,
-  x1,
-  y1,
-  z1,
-  cx = width/2,
-  cy = height/2,
-  scale = 5,
-  n = 2000000000000,
-  i = 0;
+const canvaslorenz = document.getElementById("lorenz-canvas");
+canvaslorenz.height = HEIGHT;
+canvaslorenz.width = WIDTH;
+const lorenzctx = canvaslorenz.getContext("2d");
 
-var interval = setInterval(function () {
-  if (i < n) {
-    for (var k = 0; k < 20; k += 1) {
-      x1 = x0 + h * t * (x0 - y0);
-      y1 = y0 + h * (-x0 * z0 + d * x0 - y0);
-      z1 = z0 + h * (x0 * y0 - z0);
+function reset() {
+  x = 0.01;
+  y = 0;
+  z = 0;
+  a = 10;
+  b = 28;
+  c = 8.0 / 3.0;
+  points = new Array();
+}
 
-      ctxl.strokeStyle =
-        "hsl(" +
-        Math.abs(x1) * 10 +
-        "," +
-        Math.abs(y1) * 10 +
-        "%," +
-        Math.abs(z1) * 2 +
-        "%)";
+function drawLorenz() {
+  document
+    .getElementById("lorenz-restart")
+    .addEventListener("click", function () {
+      reset();
+    });
+  // lorenzctx.clearColor(0, 0, 0, 0);
+  lorenzctx.clearRect(0,0,canvas.width,canvas.height)
 
-      ctxl.beginPath();
-      ctxl.moveTo(cx + x0 * scale, cy + y0 * scale);
-      ctxl.lineTo(cx + x1 * scale, cy + y1 * scale);
-      ctxl.stroke();
+  var color = [Math.random(), Math.random(), Math.random(), 1];
+  let dt = 0.01;
+  let dx = a * (y - x) * dt;
+  let dy = (x * (b - z) - y) * dt;
+  let dz = (x * y - c * z) * dt;
+  x = x + dx;
+  y = y + dy;
+  z = z + dz;
 
-      x0 = x1;
-      y0 = y1;
-      z0 = z1;
+  points.push(new p5.Vector(x, y, z));
 
-      i += 1;
+  lorenzctx.translate(0, 0, -80);
+  let camX = map(mouseX, 0, width, -200, 200);
+  let camY = map(mouseY, 0, height, -200, 200);
+  // lorenzctx.camera(
+  //   camX,
+  //   camY,
+  //   height / 2.0 / sin((PI * 30.0) / 180.0),
+  //   0,
+  //   0,
+  //   0,
+  //   0,
+  //   1,
+  //   0
+  // );
+  lorenzctx.scale(5,5);
+  lorenzctx.fillsyle = "none";
+
+  let hu = 0;
+  lorenzctx.beginPath();
+  lorenzctx.moveTo(WIDTH/2, HEIGHT/2);
+
+  for (let v of points) {
+    lorenzctx.strokeStyle = 'white';
+    vertex(v.x, v.y, v.z);
+
+    lorenzctx.lineTo(v.x, v.y);
+    //PVector offset = PVector.random3D();
+    //offset.mult(0.1);
+    //v.add(offset);
+    hu += 1;
+    if (hu > 255) {
+      hu = 0;
     }
-  } else {
-    clearInterval(interval);
   }
-}, 1);
+  lorenzctx.closePath();
+  lorenzctx.stroke();
 
+}
 
-// document
-//   .getElementById("lorenz-restart")
-//   .addEventListener("click", function () {
-//     initLorenz();
-//   });
+setInterval(drawLorenz, 50);

@@ -160,11 +160,13 @@ nav li a {
   width: 100%;
   gap: 2rem 2rem;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 400px 250px);
+  grid-template-rows: repeat(2, 400px 250px);
   grid-auto-rows: (3fr 1fr);
   grid-template-areas:
     "p1 p2"
-    "d1 d2";
+    "d1 d2"
+    "p3 p4"
+    "d3 d4";
 }
 .cell {
   line-height: 1.4rem;

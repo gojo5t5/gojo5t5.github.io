@@ -1,5 +1,5 @@
 let stars = [];
-let angle = (angle_speed = 0),
+let angle = angle_speed = 0,
   speed = 1;
 let stars_number = WIDTH > HEIGHT ? WIDTH * 3: HEIGHT * 3;
 

@@ -3,6 +3,9 @@ LORCANVAS.height = HEIGHT;
 LORCANVAS.width = WIDTH;
 
 var lorctx = LORCANVAS.getContext("2d");
+var lorimage = document.getElementById('lorimage');
+drawImageScaled(lorimage, lorctx);
+
 
 // if (lorGL === null) {
 //   alert(

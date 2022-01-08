@@ -2,6 +2,9 @@ const MAZECANVAS = document.getElementById("maze");
 MAZECANVAS.height = HEIGHT;
 MAZECANVAS.width = WIDTH;
 
+var mazectx = MAZECANVAS.getContext("2d");
+var mazeimg = document.getElementById('mazeimg');
+drawImageScaled(mazeimg, mazectx)
 // var cols, rows;
 // var w = 20;
 // var grid = [];

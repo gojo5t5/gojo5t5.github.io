@@ -7,7 +7,7 @@ class Star {
     this.pz = this.z;
     // assign random color
     // this.color = [random(255), random(255), random(255)];
-    this.color = [100, 100, 100];
+    this.color = getTheme() == "dark" ? [100, 100, 100]: [0, 0, 0];
 
     // when a star flies out of the screen, respawn it
     this.update = function () {
@@ -22,7 +22,7 @@ class Star {
       this.y = random(-HEIGHT, HEIGHT);
       this.z = random(WIDTH);
       this.pz = this.z;
-      this.color = [random(255), random(255), random(255)];
+      this.color = getTheme() == "dark" ? [random(255), random(255), random(255)]: [random(100), random(100), random(100)];
     };
 
     this.show = function () {

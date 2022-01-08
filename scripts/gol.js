@@ -1,14 +1,3 @@
-// set gol to a theme matching the user system's preferences
-function getTheme() {
-  if (
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    return "dark";
-  } else {
-    return "light";
-  }
-}
 const theme = getTheme();
 const STYLES = {
   dark: {
@@ -23,23 +12,19 @@ const STYLES = {
   },
 };
 
-// instantiating values
-// set canvas to fill the cell it is in
-const canvas = document.getElementById("gol");
-const cell = document.getElementsByClassName("cell");
-canvas.height = cell[0].clientHeight;
-canvas.width = cell[0].clientWidth;
-// set up grid
-const WIDTH = canvas.width;
-const HEIGHT = canvas.height;
-const ctx = canvas.getContext("2d");
+const golCanvas = document.getElementById("gol");
+golCanvas.height = cell[0].clientHeight;
+golCanvas.width = cell[0].clientWidth;
+const WIDTH = golCanvas.width;
+const HEIGHT = golCanvas.height;
 const SCALE = 5;
 const COLS = Math.floor(WIDTH / SCALE) + 2;
 const ROWS = Math.floor(HEIGHT / SCALE) + 2;
-var cAutomata = [];
-var cAutomataTmp = [];
+var cAutomata;
+var cAutomataTmp;
 
-// initialise a sterile template
+const golCtx = golCanvas.getContext("2d");
+
 function initSterile() {
   for (var r = 0; r <= ROWS; r++) {
     cAutomataTmp[r] = new Array();
@@ -49,9 +34,7 @@ function initSterile() {
   }
 }
 
-// initialise matrix that runs the simulation
 function initMatrix() {
-  // reset matrix
   cAutomata = new Array();
   cAutomataTmp = new Array();
   // create empty temp 2d array and an automata 2d array with randomly places cells
@@ -69,12 +52,11 @@ function initMatrix() {
   }
 }
 
-// helper funtion that drawgolsthe cells
 function drawgol(x, y) {
   // x is horizontal axis
   // y is vertical axis
   // fill at (x, y) for (w, h)
-  ctx.fillRect(SCALE * (x - 1), SCALE * (y - 1), SCALE, SCALE);
+  golCtx.fillRect(SCALE * (x - 1), SCALE * (y - 1), SCALE, SCALE);
 }
 
 // helper function that finds the neighbor sum
@@ -95,9 +77,9 @@ function neighbourSum(r, c) {
 function nextStep() {
   // reset tempArray
   initSterile();
-  // reset canvas
-  ctx.fillStyle = STYLES[theme]["reset"];
-  ctx.fillRect(0, 0, WIDTH, HEIGHT);
+  // reset golCanvas
+  golCtx.fillStyle = STYLES[theme]["reset"];
+  golCtx.fillRect(0, 0, WIDTH, HEIGHT);
 
   for (var r = 1; r <= ROWS - 1; r++) {
     for (var c = 1; c <= COLS - 1; c++) {
@@ -107,7 +89,7 @@ function nextStep() {
         if (sumOfNeighbors == 2 || sumOfNeighbors == 3) {
           cAutomataTmp[r][c] = 1;
           // cell continues to live
-          ctx.fillStyle = STYLES[theme]["survive"];
+          golCtx.fillStyle = STYLES[theme]["survive"];
           // drawgol accepts (x, y)
           drawgol(c, r);
         }
@@ -115,7 +97,7 @@ function nextStep() {
         if (sumOfNeighbors == 3) {
           cAutomataTmp[r][c] = 1;
           // new cell born
-          ctx.fillStyle = STYLES[theme]["spawn"];
+          golCtx.fillStyle = STYLES[theme]["spawn"];
           drawgol(c, r);
         }
       }

@@ -96,10 +96,7 @@
         <div class="cell" style="grid-area: p2">
           <a class="btn-2" href="https://gojo5t5.github.io/lorenz/">
             <span>
-              <video loop>
-                <source src="lorenz.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+              <canvas id="lorenz"></canvas>
             </span>
           </a>
         </div>
@@ -133,10 +130,9 @@
           <div class="cell" style="grid-area: p4">
             <a class="btn-2" href="https://gojo5t5.github.io/maze-generator/">
               <span>
-                <video loop>
-                  <source src="resources/mazegen.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
+                <canvas id="maze">
+
+                </canvas>
               </span>
             </a>
           </div>
@@ -152,10 +148,8 @@
         <div class="cell" style="grid-area: p5">
           <a class="btn-2" href="https://gojo5t5.github.io/falling-snow/">
             <span>
-              <video loop>
-                <source src="resources/rainfall.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+              <canvas id="rainfall">
+              </canvas>
             </span>
           </a>
         </div>
@@ -165,6 +159,21 @@
           <br />
           <strong>Falling snow or rain</strong> <br />
           Christmasy spirits! I really like dark backgrounds.
+        </div>
+
+        <!-- Project 6 Matrix -->
+        <div class="cell" style="grid-area: p6">
+          <a class="btn-2" href="">
+            <span>
+              <canvas id='matrix'></canvas>
+            </span>
+          </a>
+        </div>
+        <div class="cell" style="grid-area: d6">
+          <button class="restart" id="mazegen-restart">Restart</button>
+          <br />
+          <br />
+          <strong>The Matrix</strong> <br />
         </div>
       </section>
 
@@ -205,12 +214,15 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+      <script src="./scripts/misc.js"></script>
       <script src="./scripts/gol.js"></script>
+      <script src="./scripts/lorenz.js"></script>
       <script src="./scripts/Star.js"></script>
       <script src="./scripts/starfield.js"></script>
-      <script src="./scripts/lorenz2.js"></script>
       <script src="./scripts/Cell.js"></script>
       <script src="./scripts/maze.js"></script>
+      <script src="./scripts/rainfall.js"></script>
+
     </main>
   </body>
 </html>

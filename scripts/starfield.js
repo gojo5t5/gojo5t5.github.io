@@ -1,11 +1,10 @@
 let stars = [];
 let angle = (angle_speed = 0),
   speed = 1;
-let stars_number = WIDTH > HEIGHT ? WIDTH * 2 : HEIGHT * 2;
+let stars_number = WIDTH > HEIGHT ? WIDTH * 3: HEIGHT * 3;
 
 function setup() {
   createCanvas(WIDTH, HEIGHT).parent("starfield");
-
   for (let i = 0; i < stars_number; i++) {
     stars[i] = new Star();
   }
@@ -24,7 +23,11 @@ function draw() {
       reset();
     });
   angle += angle_speed;
-  background(0);
+  if (getTheme() == "dark") {
+    background(0);
+  } else {
+    background(255);
+  }
   translate(WIDTH / 2, HEIGHT / 2);
   rotate(angle);
   for (let star of stars) {
